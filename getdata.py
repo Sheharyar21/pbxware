@@ -11,21 +11,24 @@ file_data = []
 current_directory = os.getcwd()
 
 for filename in os.listdir(current_directory):
+    file_path = os.path.join(current_directory, filename)
    
-    if os.path.isfile(os.path.join(current_directory, filename)):
-
-        file_size = os.path.getsize(filename)
-      
-        creation_date = os.path.getctime(filename)
-
-        creation_date_formatted =  time.ctime(creation_date)
-        if filename != 'datacdr.py' and filename != 'datacdr2.py' and filename !='getdata.py':
-
+    if os.path.isfile(file_path):
+        creation_date = os.path.getctime(file_path)
+        creation_date_formatted = time.ctime(creation_date)
+        
+        if datetime.date.fromtimestamp(creation_date) == today:
+            file_size = os.path.getsize(file_path)
             file_data.append((filename, file_size, creation_date_formatted))
-            print(f"File Name: {filename}")
-            print(f"File Size: {file_size} bytes")
-            print(f"Creation Date: {creation_date_formatted}")
-            print()
+            
+            if filename != 'datacdr.py' and filename != 'datacdr2.py' and filename !='getdata.py':
+
+        
+                print(f"File Name: {filename}")
+                print(f"File Size: {file_size} bytes")
+                print(f"Creation Date: {creation_date_formatted}")
+                print()
+
 
 
 
@@ -57,4 +60,7 @@ with smtplib.SMTP(smtp_server, smtp_port) as server:
     server.send_message(message)
 
 print("Email sent successfully!")
+
+
+
 
