@@ -5,10 +5,10 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-
 file_data = []
-
 current_directory = os.getcwd()
+today = datetime.date.today()
+
 
 for filename in os.listdir(current_directory):
     file_path = os.path.join(current_directory, filename)
