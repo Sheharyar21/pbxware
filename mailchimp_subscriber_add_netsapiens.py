@@ -7,11 +7,6 @@ import json
 
 
 
-client_secret = "ccb627a583d45e1e70e5c1cf6aa7925e"
-client_id = "mailchimp"
-grant_type = "password"
-username = "100@b1communications"
-password = "^MD@l6vL&3ZL!omC"
 
 
 url = "https://core1.b1communications.ca/ns-api/oauth2/token/"
